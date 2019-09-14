@@ -1,0 +1,33 @@
+{
+  "name": "marvel",
+  "version": "1.0.0",
+  "description": "marvel searcher with API",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuillermoLoza/marvelProject.git"
+  },
+  "author": "Guillermo Loza Hernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GuillermoLoza/marvelProject/issues"
+  },
+  "homepage": "https://github.com/GuillermoLoza/marvelProject#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  }
+}
