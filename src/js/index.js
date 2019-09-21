@@ -1,15 +1,15 @@
-console.log("Hola mundo");
+import "../css/style.css";
 
-let ironMan =
+var ironMan =
   "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=iron%20man&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
-let ironManId =
+var ironManId =
   "https://gateway.marvel.com:443/v1/public/characters/1009368?&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
-let loki =
+var loki =
   "https://gateway.marvel.com:443/v1/public/characters?name=Loki&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
-let capi =
+var capi =
   "https://gateway.marvel.com:443/v1/public/characters?name=Captain%20America&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
 function quitarEspacios(st) {
@@ -19,15 +19,15 @@ function quitarEspacios(st) {
 }
 
 function searchNameStart(inputBrowse) {
-  let nameStartsWithBrowse = quitarEspacios(inputBrowse);
+  var nameStartsWithBrowse = quitarEspacios(inputBrowse);
   var linkBrowse = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${nameStartsWithBrowse}&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
   return linkBrowse;
 }
 
 function getHeroName() {
-  let inputUser = prompt("Como empieza el nombre de tu heroe?", "Iron Man");
+  var inputUser = prompt("Como empieza el nombre de tu heroe?", "Iron Man");
   if (inputUser != null) {
-    search = searchNameStart(inputUser);
+    var search = searchNameStart(inputUser);
     callAPI(search);
   }
 }
