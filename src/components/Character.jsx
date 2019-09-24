@@ -1,7 +1,6 @@
 import React from "react";
 
-const Character = props => {
-  const { text } = props;
+const Character = () => (
   <div className="character">
     <img className="character-img" src="" alt="" />
     <div className="character-details">
@@ -9,7 +8,7 @@ const Character = props => {
       <h3 className="character__comics__avilable"></h3>
       <h4 className="character__last__modification"></h4>
     </div>
-  </div>;
-};
+  </div>
+);
 
 export default Character;

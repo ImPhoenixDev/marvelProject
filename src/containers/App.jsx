@@ -1,6 +1,10 @@
 import React from "react";
 import Hero from "../components/Hero";
-
-const App = () => <Hero></Hero>;
+import Character from "../components/Character";
+const App = () => (
+  <Hero>
+    <Character />
+  </Hero>
+);
 
 export default App;
