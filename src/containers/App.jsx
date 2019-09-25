@@ -26,9 +26,9 @@ function searchNameStart(inputBrowse) {
 }
 
 function getHeroName() {
+  var inputUser = prompt("Como empieza el nombre de tu heroe?", "Iron Man");
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
-    var inputUser = prompt("Como empieza el nombre de tu heroe?", "Iron Man");
     return search;
     //    callAPI(search);
   }
@@ -51,11 +51,15 @@ function getHeroName() {
 
 const App = () => {
   const [estadoGuardado, actualizarAEstado] = useState([]);
+
   useEffect(() => {
     fetch(getHeroName())
-      .then(response => response.json())
-
-      .then(data => actualizarAEstado(data));
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        actualizarAEstado(data);
+      });
   }, []);
 
   console.log(estadoGuardado);
