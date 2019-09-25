@@ -9,7 +9,7 @@ module.exports = {
     filename: "./js/bunde.js"
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".styl"]
   },
   module: {
     rules: [
@@ -27,6 +27,20 @@ module.exports = {
             loader: MiniCSSExtractPlugin.loader
           },
           "css-loader"
+        ]
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          {
+            loader: "style-loader" // Creates style nodes
+          },
+          {
+            loader: "css-loader" // CSS --> CommonJS
+          },
+          {
+            loader: "stylus-loader" // Compiles Styl --> CSS
+          }
         ]
       },
       {
