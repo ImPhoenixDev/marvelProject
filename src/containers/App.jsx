@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Hero from "../components/Hero";
+import Left from "../components/Left";
 import Character from "../components/Character";
 import "../assets/styles/App.styl";
 // var ironMan =
@@ -66,9 +66,9 @@ const App = () => {
   console.log(estadoGuardado);
 
   return (
-    <Hero>
+    <Left>
       <Character />
-    </Hero>
+    </Left>
   );
 };
 
