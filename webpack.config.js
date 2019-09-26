@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
-
+const webpack = require("webpack");
 module.exports = {
   entry: "./src/js/index.js",
   output: {
@@ -10,6 +10,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".styl"]
+  },
+  devServer: {
+    hot: true,
+    open: true
   },
   module: {
     rules: [
