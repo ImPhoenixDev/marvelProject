@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Left from "../components/Left";
+import AppBody from "../components/AppBody";
 import Character from "../components/Character";
-import Right from "../components/Right";
+import Hero from "../components/Hero";
+import Header from "../components/Header";
+import Content from "../components/Content";
+import Footer from "../components/Footer";
 import "../assets/styles/App.styl";
 // var ironMan =
 //   "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=iron%20man&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
@@ -67,12 +70,14 @@ const App = () => {
   console.log(estadoGuardado);
 
   return (
-      <Left>
-        <Character />
-      </Left>
-      <Right>
-        <Character></Character>
-      </Right>
+    <AppBody>
+      <Character />
+      <Hero>
+        <Header />
+        <Content />
+        <Footer />
+      </Hero>
+    </AppBody>
   );
 };
 

@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  grid-row: 3/4;
+  justify-content: center
+}
+
+.footer__atribution
+  align-self: center 
+  font-family Roboto
+  font-size 18px
+  font-weight normal
+  font-style normal
+  font-stretch condensed
+  letter-spacing normal
+  text-align center
+  color #686868
+  text-decoration: none  
+
+.footer__atribution:after
+    content: ""
+    width: 0px
+    height 1px
+    display: block
+    background:#686868
+    transition: all 300ms ease
+  &.footer__atribution:hover:after {
+      width: 100%
+  } 
