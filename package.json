@@ -4,8 +4,8 @@
   "description": "marvel searcher with API",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode development",
-    "build-server": "webpack-dev-server --mode production"
+    "build": "webpack",
+    "start": "webpack-dev-server --mode production"
   },
   "repository": {
     "type": "git",

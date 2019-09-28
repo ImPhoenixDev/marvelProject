@@ -1,15 +1,19 @@
 .character
   width 100%
   height 100%
+  display: grid;
+  grid-template-rows: 40% 60%;
   background-color #ab3232
 
+
 .character-img
-  width 57.5%
-  height 35.9%
-  margin: 5.3% 22.25% 58.8% 22.25%
+  width 55%
+  height 85%
   border-radius 175px
   border solid 0px #707070
   background-color #ffffff
+  align-self: center
+  justify-self: center
 
 .Rectngulo-3
   width 89.4%
@@ -17,10 +21,17 @@
   border solid 1px #707070
   background-color #ab3232
 
+.character-details {
+  display: flex
+ flex-direction: column;
+ grid-row: 2/3;
+ justify-content: space-evenly;
+ padding-left: 20%;
+ align-items: baseline
+}
+
 .character__name
-  width 60%
-  margin: 55% 20% 40% 20%
-  font-family Roboto, sans-serif
+  font-family: 'Roboto Condensed', sans-serif
   font-size 40px
   font-weight normal
   font-style normal
@@ -31,9 +42,8 @@
   color #313030
 
 .character__comics__available
-  width 398px
   height 33px
-  font-family Roboto, sans-serif
+  font-family: 'Roboto Condensed', sans-serif
   font-size 26px
   font-weight normal
   font-style normal
@@ -44,9 +54,8 @@
   color #313030
 
 .character__last__modification
-  width 398px
   height 48px
-  font-family Roboto, sans-serif
+  font-family: 'Roboto Condensed', sans-serif
   font-size 26px
   font-weight normal
   font-style normal
