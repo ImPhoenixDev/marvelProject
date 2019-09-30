@@ -4,8 +4,8 @@ const Character = () => (
   <div className="character">
     <img
       className="character-img"
-      src="http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_xlarge.jpg"
-      alt=""
+      src="http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg"
+      alt="Character image"
     />
     <div className="character-details">
       <h2 className="character__name">Iron Man</h2>

@@ -31,31 +31,15 @@ function searchNameStart(inputBrowse) {
 }
 
 function getHeroName() {
-  var inputUser = prompt("Como empieza el nombre de tu heroe?", "Iron Man");
+  var inputUser = prompt("Enter a character's name", "Iron Man");
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
     return search;
-    //    callAPI(search);
   }
 }
-// function callAPI(search) {
-//   fetch(search)
-//     .then(response => {
-//       return response.json();
-//     })
-//     .then(json => {
-//       console.log(json);
-//     })
-//     .then(json => {
-//       console.log(json);
-//     })
-//     .catch(() => {
-//       console.log("Algo anda mal ¬¬");
-//     });
-// }
 
 const App = () => {
-  const [estadoGuardado, actualizarAEstado] = useState([]);
+  const [savedState, updateState] = useState([]);
 
   useEffect(() => {
     fetch(getHeroName())
@@ -63,11 +47,11 @@ const App = () => {
         return response.json();
       })
       .then(data => {
-        actualizarAEstado(data);
+        updateState(data);
       });
   }, []);
 
-  console.log(estadoGuardado);
+  console.log(savedState);
 
   return (
     <AppBody>

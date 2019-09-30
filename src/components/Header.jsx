@@ -9,7 +9,7 @@ const Hero = ({ children }) => (
     <p className="header__title">
       Marvel Search
       <br />
-      Data Base
+      Database
     </p>
     <form className="header__search">
       <input

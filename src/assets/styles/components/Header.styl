@@ -23,14 +23,16 @@
 .header__home__link:after
   content ""
   width: 0px;
-  height: 1px;
+  height: 2px;
   display: block
-  background: #686868;
+  background: #707070;
   transition: all 300ms ease
  &.header__home__link:hover:after {
       width: 100%
-    }
-
+      background: #4a4a4a
+ }
+ &.header__home__link:hover
+      color: #4a4a4a
 
 .header__title
   font-family: 'Roboto Condensed', sans-serif
