@@ -31,7 +31,8 @@ function searchNameStart(inputBrowse) {
 }
 
 function getHeroName() {
-  var inputUser = prompt("Enter a character's name", "Iron Man");
+  //var inputUser = prompt("Enter a character's name", "Iron Man");
+  var inputUser = "Iron Man";
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
     return search;
@@ -39,23 +40,19 @@ function getHeroName() {
 }
 
 const App = () => {
-  const [savedState, updateState] = useState([]);
+  const [savedState, updateState] = useState({ data: [] });
 
   useEffect(() => {
     fetch(getHeroName())
-      .then(response => {
-        return response.json();
-      })
+      .then(res => res.json())
       .then(data => {
         updateState(data);
       });
   }, []);
-
   console.log(savedState);
-
   return (
     <AppBody>
-      <Character />
+      <Character name={savedState.data.results} />
       <Hero>
         <Header />
         <Content />
