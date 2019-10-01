@@ -51,6 +51,15 @@ module.exports = {
         use: {
           loader: "html-loader"
         }
+      },
+      {
+        test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 90000
+          }
+        }
       }
     ]
   },

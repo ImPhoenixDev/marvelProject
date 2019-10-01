@@ -11,7 +11,6 @@
 .character-img
   width 100%
   height 100%
-  border-radius 6%
   border solid 0px #707070
   background-color #ffffff
   align-self: center
@@ -24,42 +23,59 @@
   background-color #ab3232
 
 .character-details {
-  display: flex;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: 25% 30% 30%;
   flex-direction: column;
   grid-row: 2/3;
-  justify-content: normal;
-  padding-left: 15%;
-  align-items: baseline;
+  justify-content: center;
+  padding-left: 10%;
+  align-items: center;
 }
 .character__name {
+  grid-row: 1/2;
+  grid-column: 2/4;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 39 px;
+  font-size: 45px;
   font-weight: normal;
   font-style: normal;
   font-stretch: condensed;
   line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
-  //color: #313030;
-  color white
-  margin: 10% 0 5% 0%;
+  color: #fff;
+  /*! margin: 10% 0 5% 0%; */
+  align-self: end;
 }
 
-.character__comics__available
-  height 1em
-  font-family: 'Roboto Condensed', sans-serif
-  font-size 21px
-  font-weight normal
-  font-style normal
-  font-stretch condensed
-  line-height 1.23
-  letter-spacing normal
-  text-align left
-  //color #313030
-  color white
+.character__comics__available {
 
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 21px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: condensed;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  grid-column: 2/4;
+}
+
+.character__last__modification {
+  /*! height: 1em; */
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 21px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: condensed;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  /*! margin: 10% 0 0 0; */
+}
 .character__last__modification
-  height 1em
   font-family: 'Roboto Condensed', sans-serif
   font-size 21px
   font-weight normal
@@ -70,4 +86,20 @@
   text-align left
   //color #313030
   color white
-  margin: 10% 0 0 0;
+  
+
+.book-icon
+  background-image: url(./icons/book-open-white.svg)
+  grid-row: 2/3
+  grid-column: 1/2
+
+.pencil-icon
+  background-image: url(./icons/pencil-white.svg)
+  grid-row: 3/4
+  grid-column: 1/2
+
+.icon
+  background-repeat: no-repeat
+  background-size: contain
+  width: 25px
+  height 25px
