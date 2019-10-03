@@ -17,7 +17,6 @@ const Hero = ({ children }) => (
         name="search"
         palceholder="Search"
         className="header__search_input"
-        readOnly
       />
       <input type="submit" className="header__search__send" value="" />
     </form>

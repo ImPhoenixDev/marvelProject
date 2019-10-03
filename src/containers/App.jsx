@@ -17,7 +17,7 @@ import "../assets/styles/App.styl";
 
 // var capi =
 //   "https://gateway.marvel.com:443/v1/public/characters?name=Captain%20America&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
-
+var resultDefaultSelector = 0;
 function quitarEspacios(st) {
   var link;
   link = st.replace(/ /g, "%20");
@@ -31,8 +31,8 @@ function searchNameStart(inputBrowse) {
 }
 
 function getHeroName() {
-  //var inputUser = prompt("Enter a character's name", "Iron Man");
-  var inputUser = "Iron Man";
+  var inputUser = prompt("Enter a character's name", "Iron Man");
+  //var inputUser = "Iron Man";
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
     return search;
@@ -40,7 +40,7 @@ function getHeroName() {
 }
 
 const App = () => {
-  const [savedState, updateState] = useState({ data: [] });
+  const [savedState, updateState] = useState([]);
 
   useEffect(() => {
     fetch(getHeroName())
@@ -52,10 +52,29 @@ const App = () => {
   console.log(savedState);
   return (
     <AppBody>
-      <Character name={savedState.data.results} />
+      {savedState.data !== undefined && (
+        <Character
+          comics={
+            savedState.data.results[resultDefaultSelector].comics.available
+          }
+          modification={savedState.data.results[resultDefaultSelector].modified}
+          thumbnail={
+            savedState.data.results[resultDefaultSelector].thumbnail.path +
+            "." +
+            savedState.data.results[resultDefaultSelector].thumbnail.extension
+          }
+        />
+      )}
       <Hero>
         <Header />
-        <Content />
+        {savedState.data !== undefined && (
+          <Content
+            name={savedState.data.results[resultDefaultSelector].name}
+            description={
+              savedState.data.results[resultDefaultSelector].description
+            }
+          />
+        )}
         <Footer />
       </Hero>
     </AppBody>

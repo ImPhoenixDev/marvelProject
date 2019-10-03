@@ -2,21 +2,18 @@ import React from "react";
 import "../assets/styles/components/Character.styl";
 
 const Character = props => {
-  const { name } = props;
+  const { name, comics, modification, thumbnail } = props;
   return (
     <div className="character">
-      <img
-        className="character-img"
-        src="http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg"
-        alt="Character image"
-      />
+      <img className="character-img" src={thumbnail} alt="Character image" />
       <div className="character-details">
-        <h2 className="character__name">{name}</h2>
         <i className="book-icon icon"></i>
-        <h3 className="character__comics__available">Comics avilable: 2122</h3>
+        <h3 className="character__comics__available">
+          Comics avilable: {comics}
+        </h3>
         <i className="pencil-icon icon"></i>
         <h4 className="character__last__modification">
-          Character last modification: 2016-09-28T12:08:19-0400
+          Character last modification: {modification}
         </h4>
       </div>
     </div>
