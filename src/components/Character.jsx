@@ -1,20 +1,40 @@
 import React from "react";
 import "../assets/styles/components/Character.styl";
+// import "./js/character.js";
 
 const Character = props => {
   const { comics, modification, thumbnail } = props;
-  window.addEventListener("load", event => {
-    const arrow = document.getElementsByClassName("character__arrow");
-    console.log(arrow);
-    // const show = arrow.classList.toggle("character--hidden");
-    // arrow.addEventListener("mouseover", show);
-    console.log(arrow[1]);
-  });
+  var arrows = document.getElementsByClassName("character__arrow");
+  // Hover on image show arrows
+  var hoverShow = () => {
+    for (let i = 0; i < arrows.length; i++) {
+      arrows[i].classList.remove("character--hidden");
+    }
+  };
+  //Hover on image hide arrows
+  var hoverHide = () => {
+    for (let i = 0; i < arrows.length; i++) {
+      arrows[i].classList.add("character--hidden");
+    }
+  };
+
+  var click = e => {
+    console.log(e);
+  };
+
   return (
     <div className="character">
-      <nav className="character-navarrows">
-        <i className="character__arrow character--hidden">❬</i>
-        <i className="character__arrow character--hidden">❭</i>
+      <nav
+        className="character-navarrows"
+        onMouseEnter={hoverShow}
+        onMouseLeave={hoverHide}
+      >
+        <i className="character__arrow character--hidden" onClick={click}>
+          ❬
+        </i>
+        <i className="character__arrow character--hidden" onClick={click}>
+          ❭
+        </i>
       </nav>
       <img className="character-img" src={thumbnail} alt="Character image" />
       <div className="character-details">

@@ -18,7 +18,15 @@
   z-index: 1;
   height: 100%;
 }
+// Arrow hover actions
+.character--hidden
+  opacity: 0
+  margin: 0 15% 0 15%
 
+.character--visible
+  opacity: 1
+  justify-content: space-between
+//  ---- 
 .character__arrow{
   align-items: center;
   justify-self: center;
@@ -26,16 +34,8 @@
   font-size: 58px;
   color: white;
   cursor: pointer
+  transition: all 300ms ease
 }
-
-.character--hidden
-  opacity: 0
-  margin: 0 -15% 0 -15%
-  justify-content: space-around
-
-.character--visible
-  opacity: 1
-  justify-content: space-between
 
 .character-img {
   width: 100%;
