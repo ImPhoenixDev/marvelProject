@@ -1,6 +1,7 @@
 .header {
   display: flex;
-  grid-column: 1/2;
+  grid-column: 2/3;
+  grid-row: 1/2
   justify-content: space-between;
   align-content: center;
 }
@@ -56,17 +57,21 @@
   padding-right: 7.5%;
 }
 
-.header__search_input {
+.header__search__input {
     border-radius: 15px;
     border: 1px #707070 solid;
     padding: 5px 5px 5px 25px;
 }
 
 .header__search__send {
-    height: 30px;
-    width: 30px;
-    border-radius: 100% ;
+    position: relative
+    left: 5% 
+    height: 21px;
+    width: 21px;
     border: none;
-    background: #707070; /* Set the bg image here. with "no-repeat" */
+    background-image: url("../components/icons/search-gray.svg")
+    background-repeat: no-repeat
+    background-size: cover
+    background-color: inherit
     cursor: pointer
 }
