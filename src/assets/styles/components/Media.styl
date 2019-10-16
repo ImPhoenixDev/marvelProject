@@ -5,6 +5,7 @@
     .appBody
         grid-template-rows: 9% 41% 41% 9% 
         max-height: none
+        height: auto
 
     .header 
         grid-row: 1/2
@@ -14,12 +15,19 @@
 
     .header__home__link
         color white
+        &.header__home__link:hover:after {
+            width: 100%
+            background: white
+        }
+        &.header__home__link:hover
+            color: white
 
     .header__title
         color white
 
     .header__search__input 
         border-color: white
+        padding: 1px 2px 2px 1px
 
     .header__search__send 
         filter: brightness(100)
@@ -44,3 +52,50 @@
     .footer
         grid-row: 4/5   
         grid-column: 1/3
+
+// Mobile
+
+@media (max-width: 576px) 
+
+    .header__home__link
+        font-size: 1em
+
+    .header__title
+        display inline
+        font-size: 1em
+
+    .header__search__input 
+        display: none
+
+    .header 
+        min-height: 3em
+
+    .character
+        grid-template-rows: 70% 30%
+        grid-template-columns: 1fr
+        
+    .character-img
+        grid-row: 1/2
+
+    .character-details
+        grid-row: 2/3
+
+    .footer__atribution
+        font-size: 1em
+
+
+@media (max-width 350px)
+    
+    .header__title
+         display: none
+
+    .character__last__modification
+        font-size: 1em
+    
+    .character__comics__available
+        font-size: 1em
+
+    .icon 
+        width: 20px
+        height 20px
+    
