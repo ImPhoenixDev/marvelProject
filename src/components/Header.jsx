@@ -16,9 +16,9 @@ const Hero = ({ children }) => (
         type="text"
         name="search"
         palceholder="Search"
-        className="header__search_input"
+        className="header__search__input"
       />
-      <input type="submit" className="header__search__send" value="" />
+      <input type="button" className="header__search__send" value="" />
     </form>
   </header>
 );

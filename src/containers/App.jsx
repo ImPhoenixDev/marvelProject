@@ -65,8 +65,8 @@ const App = () => {
           }
         />
       )}
+      <Header />
       <Hero>
-        <Header />
         {savedState.data !== undefined && (
           <Content
             name={savedState.data.results[resultDefaultSelector].name}
@@ -75,8 +75,8 @@ const App = () => {
             }
           />
         )}
-        <Footer />
       </Hero>
+      <Footer />
     </AppBody>
   );
 };
