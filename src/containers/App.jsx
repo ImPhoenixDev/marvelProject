@@ -19,7 +19,7 @@ import "../assets/styles/App.styl";
 // var capi =
 //   "https://gateway.marvel.com:443/v1/public/characters?name=Captain%20America&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
-var resultDefaultSelector = 0;
+// var selector = 0;
 
 function quitarEspacios(st) {
   var link;
@@ -33,47 +33,48 @@ function searchNameStart(inputBrowse) {
   return linkBrowse;
 }
 
+var inputUser = prompt("Enter a character's name", "Iron Man");
 function getHeroName() {
-  var inputUser = prompt("Enter a character's name", "Iron Man");
-  //var inputUser = "Iron Man";
+  // var inputUser = "Iron Man";
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
     return search;
   }
 }
-const App = () => {
-  //var API = getHeroName();
-  const marvelApi = useMarvelApi(
-    "https://gateway.marvel.com:443/v1/public/characters?name=Captain%20America&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9"
-  );
+var selector = 0;
 
+const App = () => {
+  //const [selector, setSelector] = useState(0);
+  var API = getHeroName();
+  const marvelApi = useMarvelApi(API);
+
+  function handleSelector() {
+    console.log("");
+    console.log("hi");
+  }
   return (
     <AppBody>
       <Header />
       {marvelApi.data !== undefined && (
         <Character
-          comics={
-            marvelApi.data.results[resultDefaultSelector].comics.available
-          }
-          modification={marvelApi.data.results[resultDefaultSelector].modified}
+          comics={marvelApi.data.results[selector].comics.available}
+          modification={marvelApi.data.results[selector].modified}
           thumbnail={
-            marvelApi.data.results[resultDefaultSelector].thumbnail.path +
+            marvelApi.data.results[selector].thumbnail.path +
             "." +
-            marvelApi.data.results[resultDefaultSelector].thumbnail.extension
+            marvelApi.data.results[selector].thumbnail.extension
           }
         />
       )}
       <Hero>
         {marvelApi.data !== undefined && (
           <Content
-            name={marvelApi.data.results[resultDefaultSelector].name}
-            description={
-              marvelApi.data.results[resultDefaultSelector].description
-            }
+            name={marvelApi.data.results[selector].name}
+            description={marvelApi.data.results[selector].description}
           />
         )}
       </Hero>
-      <Footer />
+      <Footer onClick={handleSelector}></Footer>
     </AppBody>
   );
 };
