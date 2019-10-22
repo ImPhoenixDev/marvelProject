@@ -29,10 +29,16 @@ const Character = props => {
         onMouseEnter={hoverShow}
         onMouseLeave={hoverHide}
       >
-        <i className="character__arrow character--hidden" onClick={click}>
+        <i
+          className="character__arrow character--hidden"
+          onClick={(click, props.onClick)}
+        >
           ❬
         </i>
-        <i className="character__arrow character--hidden" onClick={click}>
+        <i
+          className="character__arrow character--hidden"
+          onClick={(click, props.onClick)}
+        >
           ❭
         </i>
       </nav>

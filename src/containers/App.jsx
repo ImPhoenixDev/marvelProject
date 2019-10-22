@@ -41,16 +41,15 @@ function getHeroName() {
     return search;
   }
 }
-var selector = 0;
+//var selector = 0;
 
 const App = () => {
-  //const [selector, setSelector] = useState(0);
+  const [selector, setSelector] = useState(0);
   var API = getHeroName();
   const marvelApi = useMarvelApi(API);
 
   function handleSelector() {
-    console.log("");
-    console.log("hi");
+    setSelector(selector + 1);
   }
   return (
     <AppBody>
@@ -64,6 +63,7 @@ const App = () => {
             "." +
             marvelApi.data.results[selector].thumbnail.extension
           }
+          onClick={handleSelector}
         />
       )}
       <Hero>

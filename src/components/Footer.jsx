@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/components/Footer.styl";
 
-const Footer = ({ children }) => (
+const Footer = props => (
   <footer className="footer">
     <a href="http://marvel.com" className="footer__atribution" target="_blank">
       Data provided by Marvel. © 2019 MARVEL
