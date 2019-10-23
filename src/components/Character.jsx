@@ -3,7 +3,13 @@ import "../assets/styles/components/Character.styl";
 // import "./js/character.js";
 
 const Character = props => {
-  const { comics, modification, thumbnail } = props;
+  const {
+    comics,
+    modification,
+    thumbnail,
+    onArrowLeftClick,
+    onArrowRightClick
+  } = props;
   var arrows = document.getElementsByClassName("character__arrow");
   // Hover on image show arrows
   var hoverShow = () => {
@@ -31,13 +37,13 @@ const Character = props => {
       >
         <i
           className="character__arrow character--hidden"
-          onClick={(click, props.onClick)}
+          onMouseEnter={onArrowLeftClick}
         >
           ❬
         </i>
         <i
           className="character__arrow character--hidden"
-          onClick={(click, props.onClick)}
+          onMouseEnter={onArrowRightClick}
         >
           ❭
         </i>
