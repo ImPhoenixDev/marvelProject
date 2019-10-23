@@ -7,8 +7,8 @@ const Character = props => {
     comics,
     modification,
     thumbnail,
-    onArrowLeftClick,
-    onArrowRightClick
+    onArrowRightClick,
+    onArrowLeftClick
   } = props;
   var arrows = document.getElementsByClassName("character__arrow");
   // Hover on image show arrows
@@ -37,13 +37,13 @@ const Character = props => {
       >
         <i
           className="character__arrow character--hidden"
-          onMouseEnter={onArrowLeftClick}
+          onClick={onArrowLeftClick}
         >
           ❬
         </i>
         <i
           className="character__arrow character--hidden"
-          onMouseEnter={onArrowRightClick}
+          onClick={onArrowRightClick}
         >
           ❭
         </i>

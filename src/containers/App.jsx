@@ -7,6 +7,7 @@ import Content from "../components/Content";
 import Footer from "../components/Footer";
 import useMarvelApi from "../hooks/useMarvelApi.jsx";
 import "../assets/styles/App.styl";
+
 // var ironMan =
 //   "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=iron%20man&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
@@ -33,9 +34,9 @@ function searchNameStart(inputBrowse) {
   return linkBrowse;
 }
 
-var inputUser = prompt("Enter a character's name", "Iron Man");
+//var inputUser = prompt("Enter a character's name", "Iron Man");
 function getHeroName() {
-  // var inputUser = "Iron Man";
+  var inputUser = "Iron Man";
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
     return search;
@@ -44,17 +45,22 @@ function getHeroName() {
 //var selector = 0;
 
 const App = () => {
-  const [selector, setSelector] = useState(1);
+  const [selector, setSelector] = useState(0);
   var API = getHeroName();
   const marvelApi = useMarvelApi(API);
 
   function handleLeft() {
-    console.log("hola");
-    setSelector(selector + 1);
+    if (selector > 0) {
+      setSelector(selector - 1);
+    }
   }
+
   function handleRight() {
-    setSelector(selector + 1);
+    if (selector < marvelApi.data.results.length - 1) {
+      setSelector(selector + 1);
+    }
   }
+
   return (
     <AppBody>
       <Header />
@@ -67,8 +73,8 @@ const App = () => {
             "." +
             marvelApi.data.results[selector].thumbnail.extension
           }
-          onArrowRigthClick={handleRight}
           onArrowLeftClick={handleLeft}
+          onArrowRightClick={handleRight}
         />
       )}
       <Hero>
