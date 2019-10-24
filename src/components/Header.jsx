@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "../assets/styles/components/Header.styl";
 
 const Hero = ({ children }) => (
   <header className="header">
-    <a href="#" className="header__home__link">
+    <Link to="/home" className="header__home__link">
       Home
-    </a>
+    </Link>
     <p className="header__title">
       Marvel Search
       <br />
