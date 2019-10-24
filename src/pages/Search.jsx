@@ -6,21 +6,6 @@ import Header from "../components/Header";
 import Content from "../components/Content";
 import Footer from "../components/Footer";
 import useMarvelApi from "../hooks/useMarvelApi.jsx";
-import "../assets/styles/App.styl";
-
-// var ironMan =
-//   "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=iron%20man&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
-
-// var ironManId =
-//   "https://gateway.marvel.com:443/v1/public/characters/1009368?&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
-
-// var loki =
-//   "https://gateway.marvel.com:443/v1/public/characters?name=Loki&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
-
-// var capi =
-//   "https://gateway.marvel.com:443/v1/public/characters?name=Captain%20America&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
-
-// var selector = 0;
 
 function quitarEspacios(st) {
   var link;
@@ -42,11 +27,10 @@ function getHeroName() {
     return search;
   }
 }
-//var selector = 0;
 
-const App = () => {
-  const [selector, setSelector] = useState(0);
+export default function Search() {
   var API = getHeroName();
+  const [selector, setSelector] = useState(0);
   const marvelApi = useMarvelApi(API);
 
   function handleLeft() {
@@ -60,7 +44,6 @@ const App = () => {
       setSelector(selector + 1);
     }
   }
-
   return (
     <AppBody>
       <Header />
@@ -88,6 +71,4 @@ const App = () => {
       <Footer />
     </AppBody>
   );
-};
-
-export default App;
+}
