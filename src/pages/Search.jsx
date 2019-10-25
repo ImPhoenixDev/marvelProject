@@ -7,7 +7,7 @@ import Content from "../components/Content";
 import Footer from "../components/Footer";
 import useMarvelApi from "../hooks/useMarvelApi.jsx";
 
-function quitarEspacios(string) {
+function removeSpaces(string) {
   var link;
 
   if (string != null) {
@@ -16,47 +16,26 @@ function quitarEspacios(string) {
   }
 }
 
-function searchNameStart(inputBrowse) {
-  var nameStartsWithBrowse = quitarEspacios(inputBrowse);
+function inputToUrl(inputBrowse) {
+  var nameStartsWithBrowse = removeSpaces(inputBrowse);
   var linkBrowse = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${nameStartsWithBrowse}&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
   return linkBrowse;
 }
 
-// var inputUser = "Iron Man";
-// This state manage the input user
-
-// var API = getHeroName();
 export default function Search() {
-  const [selector, setSelector] = useState(0);
+  const [selector, setSelector] = useState(4);
   const [inputUser, setinputUser] = useState("Iron Man");
-  const [characterUrl, setCharacterUrl] = useState(getHeroName(inputUser));
-
-  // useState(
-  //   prompt("Enter a character's name", "Iron Man")
-  // );
+  const [characterUrl, setCharacterUrl] = useState(inputToUrl(inputUser));
+  var marvelApi = useMarvelApi(characterUrl);
 
   function getInput() {
     var input = prompt("hi", "Thor");
-    console.log(input);
-
     return input;
   }
 
-  function getHeroName(input) {
-    // var inputUser = prompt("Enter a character's name", "Iron Man");
-    // if (inputUser != null) {
-    var search = searchNameStart(input);
-    return search;
-    // }
-  }
-
-  var marvelApi = useMarvelApi(characterUrl);
-
   function d() {
-    var url = getHeroName(getInput());
-    if (url != null) {
-      console.log(setCharacterUrl(url));
-    }
+    setCharacterUrl(inputToUrl(getInput()));
+    setSelector(0);
   }
 
   function handleLeft() {
