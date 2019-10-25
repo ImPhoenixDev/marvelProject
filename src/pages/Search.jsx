@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBody from "../components/AppBody";
 import Character from "../components/Character";
 import Hero from "../components/Hero";
@@ -19,19 +19,25 @@ function searchNameStart(inputBrowse) {
   return linkBrowse;
 }
 
-//var inputUser = prompt("Enter a character's name", "Iron Man");
+// var inputUser = "Iron Man";
 function getHeroName() {
-  var inputUser = "Iron Man";
+  var inputUser = prompt("Enter a character's name", "Iron Man");
   if (inputUser != null) {
     var search = searchNameStart(inputUser);
     return search;
   }
 }
 
+// var API = getHeroName();
 export default function Search() {
-  var API = getHeroName();
   const [selector, setSelector] = useState(0);
-  const marvelApi = useMarvelApi(API);
+  const [characterUrl, setCharacterUrl] = useState(getHeroName());
+
+  var marvelApi = useMarvelApi(characterUrl);
+
+  function d() {
+    setCharacterUrl(getHeroName());
+  }
 
   function handleLeft() {
     if (selector > 0) {
@@ -42,8 +48,10 @@ export default function Search() {
   function handleRight() {
     if (selector < marvelApi.data.results.length - 1) {
       setSelector(selector + 1);
+      d();
     }
   }
+
   return (
     <AppBody>
       <Header />

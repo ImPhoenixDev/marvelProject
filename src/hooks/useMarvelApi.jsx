@@ -7,7 +7,7 @@ const useMarvelApi = API => {
     fetch(API)
       .then(res => res.json())
       .then(data => setMarvelApi({ ...data, state: true }));
-  }, []);
+  }, [API]);
   return marvelApi;
 };
 export default useMarvelApi;
