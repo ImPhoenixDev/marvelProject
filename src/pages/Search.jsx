@@ -23,7 +23,7 @@ function inputToUrl(inputBrowse) {
 }
 
 export default function Search() {
-  const [selector, setSelector] = useState(4);
+  const [selector, setSelector] = useState(0);
   const [inputUser] = useState("Iron Man");
   const [characterUrl, setCharacterUrl] = useState(inputToUrl(inputUser));
   const marvelApi = useMarvelApi(characterUrl);
