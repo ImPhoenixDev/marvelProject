@@ -10,6 +10,7 @@ const Character = props => {
     onArrowRightClick,
     onArrowLeftClick
   } = props;
+
   var arrows = document.getElementsByClassName("character__arrow");
   // Hover on image show arrows
   var hoverShow = () => {
@@ -17,15 +18,11 @@ const Character = props => {
       arrows[i].classList.remove("character--hidden");
     }
   };
-  //Hover on image hide arrows
+  //!Hover on image && hide arrows
   var hoverHide = () => {
     for (let i = 0; i < arrows.length; i++) {
       arrows[i].classList.add("character--hidden");
     }
-  };
-
-  var click = e => {
-    console.log(e);
   };
 
   return (
