@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import AppBody from "../components/AppBody";
 import Character from "../components/Character";
 import Hero from "../components/Hero";
@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Content from "../components/Content";
 import Footer from "../components/Footer";
 import useMarvelApi from "../hooks/useMarvelApi";
+import Events from "../components/Events";
 
 function removeSpaces(string) {
   let link;
@@ -28,11 +29,6 @@ export default function Search() {
   const [characterUrl, setCharacterUrl] = useState(inputToUrl(inputUser));
   const marvelApi = useMarvelApi(characterUrl);
 
-  function getInput() {
-    const input = prompt("hi", "Thor");
-    return input;
-  }
-
   function handleLeft() {
     if (selector > 0) {
       setSelector(selector - 1);
@@ -45,31 +41,43 @@ export default function Search() {
     }
   }
   function handleSearch(form) {
-    console.log(this);
+    console.log(marvelApi.data);
 
     setCharacterUrl(inputToUrl(form));
   }
   return (
-    <AppBody>
-      <Header onSendingSearch={handleSearch} />
-      {marvelApi.data !== undefined && (
-        <Character
-          comics={marvelApi.data.results[selector].comics.available}
-          modification={marvelApi.data.results[selector].modified}
-          thumbnail={`${marvelApi.data.results[selector].thumbnail.path}.${marvelApi.data.results[selector].thumbnail.extension}`}
-          onArrowLeftClick={handleLeft}
-          onArrowRightClick={handleRight}
-        />
-      )}
-      <Hero>
+    <Fragment>
+      <AppBody>
+        <Header onSendingSearch={handleSearch} />
         {marvelApi.data !== undefined && (
-          <Content
-            name={marvelApi.data.results[selector].name}
-            description={marvelApi.data.results[selector].description}
+          <Character
+            comics={marvelApi.data.results[selector].comics.available}
+            modification={marvelApi.data.results[selector].modified}
+            thumbnail={`${marvelApi.data.results[selector].thumbnail.path}.${marvelApi.data.results[selector].thumbnail.extension}`}
+            onArrowLeftClick={handleLeft}
+            onArrowRightClick={handleRight}
           />
         )}
-      </Hero>
-      <Footer />
-    </AppBody>
+        <Hero>
+          {marvelApi.data !== undefined && (
+            <Content
+              name={marvelApi.data.results[selector].name}
+              description={marvelApi.data.results[selector].description}
+            />
+          )}
+        </Hero>
+        <Footer />
+      </AppBody>
+      {marvelApi.data && (
+        <Events
+          // thumbnail={}
+          // extension={}
+          // name={}
+          // available={}
+          eventsPath={marvelApi.data.results[selector].events.collectionURI}
+          selector={selector}
+        />
+      )}
+    </Fragment>
   );
 }
