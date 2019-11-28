@@ -42,7 +42,6 @@ export default function Search() {
   }
   function handleSearch(form) {
     console.log(marvelApi.data);
-
     setCharacterUrl(inputToUrl(form));
   }
   return (
@@ -74,8 +73,8 @@ export default function Search() {
           // extension={}
           // name={}
           // available={}
-          eventsPath={marvelApi.data.results[selector].events.collectionURI}
-          selector={selector}
+          storiesPath={marvelApi.data.results[selector].events.collectionURI}
+          selectorProp={selector}
         />
       )}
     </Fragment>

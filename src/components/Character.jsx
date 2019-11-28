@@ -18,6 +18,7 @@ const Character = props => {
       arrows[i].classList.remove("character--hidden");
     }
   };
+
   //!Hover on image && hide arrows
   var hoverHide = () => {
     for (let i = 0; i < arrows.length; i++) {

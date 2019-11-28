@@ -18,14 +18,7 @@ const Hero = props => {
 
   return (
     <header className="header">
-      <Link to="/home" className="header__home__link">
-        Home
-      </Link>
-      <p className="header__title">
-        Marvel Search
-        <br />
-        Database
-      </p>
+      <p className="header__title">Marvel Search Database</p>
       <form className="header__search" onSubmit={handleSubmit}>
         <input
           className="header__search__input"
