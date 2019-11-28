@@ -25,8 +25,8 @@ function inputToUrl(inputBrowse) {
 
 export default function Search() {
   const [selector, setSelector] = useState(0);
-  const [inputUser] = useState("Iron Man");
-  const [characterUrl, setCharacterUrl] = useState(inputToUrl(inputUser));
+  const [defaultSearch] = useState("Iron Man");
+  const [characterUrl, setCharacterUrl] = useState(inputToUrl(defaultSearch));
   const marvelApi = useMarvelApi(characterUrl);
 
   function handleLeft() {
@@ -40,10 +40,12 @@ export default function Search() {
       setSelector(selector + 1);
     }
   }
+
   function handleSearch(form) {
     console.log(marvelApi.data);
     setCharacterUrl(inputToUrl(form));
   }
+
   return (
     <Fragment>
       <AppBody>
