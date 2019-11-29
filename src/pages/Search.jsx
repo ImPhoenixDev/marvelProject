@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Content from "../components/Content";
 import Footer from "../components/Footer";
 import useMarvelApi from "../hooks/useMarvelApi";
+
 import Events from "../components/Events";
 
 function removeSpaces(string) {
@@ -22,7 +23,6 @@ function inputToUrl(inputBrowse) {
   const linkBrowse = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${nameStartsWithBrowse}&ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
   return linkBrowse;
 }
-
 export default function Search() {
   const [selector, setSelector] = useState(0);
   const [defaultSearch] = useState("Iron Man");
@@ -42,7 +42,6 @@ export default function Search() {
   }
 
   function handleSearch(form) {
-    console.log(marvelApi.data);
     setCharacterUrl(inputToUrl(form));
   }
 
@@ -75,7 +74,7 @@ export default function Search() {
           // extension={}
           // name={}
           // available={}
-          storiesPath={marvelApi.data.results[selector].events.collectionURI}
+          // events={eventsData}
           selectorProp={selector}
         />
       )}

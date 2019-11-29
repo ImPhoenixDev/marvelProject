@@ -1,39 +1,32 @@
 import React, { useState, useEffect, Fragment } from "react";
+import useEvents from "../hooks/useEvents";
+const path =
+  "http://gateway.marvel.com/v1/public/characters/1009664/events?ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
 
 export default function Events(props) {
-  // const { thumbnail, extension, name, available, eventsPath } = props;
-  const { eventsPath, selectorProp } = props;
-  const [events, setEvents] = useState([]);
-  const url = `${eventsPath}?ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
+  const { thumbnail, selectorProp } = props;
+  const [eventsURL, setEventsURL] = useState(path);
+  const [evData, setEvData] = useState([]);
 
-  console.log(url);
-  useEffect(() => {
-    fetch(url)
-      .then(Response => Response.json())
-      .then(data => setEvents(data));
-  }, [eventsPath]);
+  // setEvData(useEvents(eventsURL));
+  const data = useEvents(eventsURL);
 
-  if (events.data != null) {
-    console.log(events);
-  }
+  // setEventsURL(URL);
+  // function getEvents() {
+  //   const path = marvelApi.data.results[0].events.collectionURI;
+  //   const URL = `${path}?ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
+  // }
 
-  if (events.data != undefined) {
-    const imageUrl = events.data.results[selectorProp].thumbnail.path;
-    console.log(imageUrl);
-    var imageUrls = imageUrl + ".jpg";
-    return imageUrls;
-  }
+  // useEffect(() => {
+  //   console.log("events links");
+  //   console.log(evData.data);
+  //   return evData;
+  // }, [eventsURL]);
 
   return (
     <Fragment>
-      {events.data && <img src={imageUrls} alt="hi" />}
-      {/* {events.data != undefined && (
-        <div className="">
-          <picture>
-            <img src={imageUrl} alt="" srcset={imageUrl} />
-          </picture>
-        </div>
-      )} */}
+      <h1>Hi</h1>
+      {data.data !== undefined && <p>{data.data.limit}</p>}
     </Fragment>
   );
 }
