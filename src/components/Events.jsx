@@ -1,32 +1,40 @@
 import React, { useState, useEffect, Fragment } from "react";
 import useEvents from "../hooks/useEvents";
-const path =
-  "http://gateway.marvel.com/v1/public/characters/1009664/events?ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9";
+import "../assets/styles/components/Events.styl";
 
 export default function Events(props) {
-  const { thumbnail, selectorProp } = props;
-  const [eventsURL, setEventsURL] = useState(path);
-  const [evData, setEvData] = useState([]);
+  const { eventsURL } = props;
+  const completePath = `${eventsURL}?ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
+  const eventsData = useEvents(completePath);
 
-  // setEvData(useEvents(eventsURL));
-  const data = useEvents(eventsURL);
-
-  // setEventsURL(URL);
-  // function getEvents() {
-  //   const path = marvelApi.data.results[0].events.collectionURI;
-  //   const URL = `${path}?ts=1&apikey=9247cc40ccabf6b7899f5b61ee20f4e3&hash=c7b493fe930ae3d81e59433eccb77ab9`;
-  // }
-
-  // useEffect(() => {
-  //   console.log("events links");
-  //   console.log(evData.data);
-  //   return evData;
-  // }, [eventsURL]);
+  console.log(eventsData);
 
   return (
-    <Fragment>
-      <h1>Hi</h1>
-      {data.data !== undefined && <p>{data.data.limit}</p>}
-    </Fragment>
+    <section className="wrapper">
+      <div>
+        <h1 className="title">Events</h1>
+        <small className="there-are-events">
+          There are the events this personage has participated.
+        </small>
+      </div>
+      {eventsData.data !== undefined && (
+        <div className="gallery">
+          {eventsData.data.results.map(results => {
+            return (
+              <div className="event" key={results.id}>
+                <img
+                  src={`${results.thumbnail.path}.${results.thumbnail.extension}`}
+                  alt={`${results.title} image`}
+                  className="thumbnail"
+                />
+                <small className="description" key>
+                  {results.description}
+                </small>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </section>
   );
 }

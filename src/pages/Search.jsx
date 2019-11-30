@@ -43,6 +43,7 @@ export default function Search() {
 
   function handleSearch(form) {
     setCharacterUrl(inputToUrl(form));
+    console.log(marvelApi);
   }
 
   return (
@@ -70,12 +71,7 @@ export default function Search() {
       </AppBody>
       {marvelApi.data && (
         <Events
-          // thumbnail={}
-          // extension={}
-          // name={}
-          // available={}
-          // events={eventsData}
-          selectorProp={selector}
+          eventsURL={marvelApi.data.results[selector].events.collectionURI}
         />
       )}
     </Fragment>
