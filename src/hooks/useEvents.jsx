@@ -7,7 +7,7 @@ const useEvents = URL => {
     fetch(URL)
       .then(Response => Response.json())
       .then(data => setEvents({ ...data }));
-  }, URL);
+  }, [URL]);
 
   return events;
 };
