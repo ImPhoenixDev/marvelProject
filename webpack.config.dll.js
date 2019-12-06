@@ -4,7 +4,7 @@ const webpack = require("webpack");
 module.exports = {
   mode: "production",
   entry: {
-    modules: ["html-webpack-plugin"]
+    modules: ["react", "react-dom"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new webpack.DllPlugin({
       name: "[name]",
-      path: path.join(__dirname, "[name]-manifest.json")
+      path: path.join(__dirname, "[name].manifest.json")
     })
   ]
 };

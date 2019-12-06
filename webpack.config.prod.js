@@ -3,19 +3,18 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-  entry: {
-    app: path.resolve(__dirname, "src/index.js")
-  },
+  entry: "./src/js/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
     filename: "js/[name].js",
-    publicPath: "http://localhost:3001/",
-    chunkFilename: "js/[id].[chunkhash].js"
+    publicPath: "./"
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".styl", ".css"]
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(jsx|js)$/,
         use: "babel-loader",
         exclude: /node_modules/
       },
@@ -24,7 +23,8 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader
-          }
+          },
+          "css-loader"
         ]
       },
       {
@@ -32,7 +32,9 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader
-          }
+          },
+          "css-loader",
+          "stylus-loader"
         ]
       },
       {
@@ -53,9 +55,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html")
+      // filename: path.resolve(__dirname, "index.html")
     }),
     new webpack.DllReferencePlugin({
-      manifest: require("./modules-manifest.json")
+      manifest: require("./modules.manifest.json")
     })
   ]
 };
