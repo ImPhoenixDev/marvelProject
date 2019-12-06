@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/GuillermoLoza/marvelProject/issues"
   },
-  "homepage": "https://github.com/GuillermoLoza/marvelProject#readme",
+  "homepage": ".",
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -43,6 +43,7 @@
     "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {
+    "file-loader": "^5.0.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2"

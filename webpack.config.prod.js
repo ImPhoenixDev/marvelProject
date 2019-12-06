@@ -1,64 +1,74 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
+  mode: "production",
   entry: "./src/js/index.js",
   output: {
-    filename: "js/[name].js",
-    publicPath: "./"
+    filename: "./js/bunde.js"
   },
   resolve: {
-    extensions: [".js", ".jsx", ".styl", ".css"]
+    extensions: [".js", ".jsx", ".styl"]
+  },
+  devServer: {
+    hot: true,
+    open: true
   },
   module: {
     rules: [
       {
-        test: /\.(jsx|js)$/,
-        use: "babel-loader",
-        exclude: /node_modules/
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          "css-loader"
-        ]
+        use: {
+          loader: "css-loader"
+        }
       },
       {
         test: /\.styl$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: "style-loader" // Creates style nodes
           },
-          "css-loader",
-          "stylus-loader"
+          {
+            loader: "css-loader" // CSS --> CommonJS
+          },
+          {
+            loader: "stylus-loader" // Compiles Styl --> CSS
+          }
         ]
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader"
+        }
       },
       {
         test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm$/,
         use: {
           loader: "url-loader",
           options: {
-            limit: 1000
+            limit: 90000
           }
         }
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "css/[name].css",
-      chunkFilename: "css/[id].css"
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "./index.html"
     }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "public/index.html")
-      // filename: path.resolve(__dirname, "index.html")
-    }),
-    new webpack.DllReferencePlugin({
-      manifest: require("./modules.manifest.json")
+    new MiniCSSExtractPlugin({
+      filename: "css/[name].css"
     })
   ]
 };

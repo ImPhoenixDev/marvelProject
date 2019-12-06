@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import Search from "../pages/Search";
 import "../assets/styles/App.styl";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact path="/" component={Search} />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
