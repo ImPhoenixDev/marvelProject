@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React from "react";
 import useEvents from "../hooks/useEvents";
 import "../assets/styles/components/Events.styl";
 
@@ -22,7 +22,7 @@ export default function Events(props) {
       </div>
       {eventsData.data !== undefined && (
         <div className="gallery" id="gallery">
-          {eventsData.data.results.map(results => {
+          {eventsData.data.results.map((results) => {
             return (
               <div className="event" key={results.id}>
                 <img
@@ -34,9 +34,7 @@ export default function Events(props) {
                   className="thumbnail"
                 />
                 <h2 className="title">{results.title}</h2>
-                <small className="description" key>
-                  {results.description}
-                </small>
+                <small className="description">{results.description}</small>
               </div>
             );
           })}
